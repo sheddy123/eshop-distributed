@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/aspire/">
     <Project Path="AppHost/AppHost.csproj" />
+    <Project Path="ServiceDefaults/ServiceDefaults.csproj" Id="0af97cb4-b5d2-4985-9c2a-5cecee590483" />
   </Folder>
   <Folder Name="/frontend/" />
   <Folder Name="/services/" />
