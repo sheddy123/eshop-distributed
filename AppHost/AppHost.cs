@@ -8,10 +8,21 @@ var postgres = builder.AddPostgres("postgres")
 
 var catalogDb = postgres.AddDatabase("catalogdb");
 
+var cache = builder.AddRedis("cache")
+    .WithRedisInsight()
+    .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent);
+
 // add projects and cloud-native backing services here
 builder.AddProject<Projects.Catalog>("catalog")
     .WithReference(catalogDb)
     .WaitFor(catalogDb);
+
+// add projects and cloud-native backing services here
+
+builder.AddProject<Projects.Basket>("basket")
+    .WithReference(cache)
+    .WaitFor(cache);
 
 // add projects and cloud-native backing services here
 
